@@ -37,7 +37,7 @@ export class WalletService {
 
       console.log('Sending request to create wallet with payload:', payload);
 
-      // Gửi yêu cầu tới Crossmint API
+      // send to  Crossmint API
       const response = await axios.post(this.crossmintApiUrl, payload, {
         headers: {
           'X-API-KEY': this.crossmintApiKey,
@@ -50,9 +50,9 @@ export class WalletService {
       if (response.data && response.data.address) {
         const walletAddress = response.data.address;
 
-        // Lưu ví vào cơ sở dữ liệu
+        // save to db
         const wallet = this.userWalletRepo.create({
-          email, // Lưu email vào DB
+          email,
           walletAddress,
         });
 
